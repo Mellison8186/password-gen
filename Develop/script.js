@@ -15,17 +15,14 @@ var generatePassword = function() {
   }
 }
   if (pwdLength(pwdLengthInput)) {
-    var spCharactersInput = window.confirm("Would you like to use special characters?");
-    if (spCharactersInput) {
-      console.log(passLength)
-      return true
-    }
-    else {
-      return false
-    }
-    var lowerCharactersInput = window.confirm("Would you like to use lower case characters?");
-    var upperCharactersInput = window.confirm("Would you like to use upper case characters?");
-    var numericCharactersInput = window.confirm("Would you like to use numeric characters?");
+    var spCharacters = window.confirm("Would you like to use special characters?");
+      console.log(spCharacters)
+    var lowerCharacters = window.confirm("Would you like to use lower case characters?");
+      console.log(lowerCharacters)
+    var upperCharacters = window.confirm("Would you like to use upper case characters?");
+      console.log(upperCharacters)
+    var numericCharacters = window.confirm("Would you like to use numeric characters?");
+      console.log(numericCharacters)
   }
   else {
     generatePassword()
