@@ -4,11 +4,12 @@
 var generatePassword = function() {
 
   // Declare global variables
-  var spCharacters = "!@#$%^&*()?.";
-  var lowerCharacters = 'abcdefghijklmnopqrstuvwxyz';
-  var upperCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var numbers = "1234567890";
+  var spCharactersString = "!@#$%^&*()?.";
+  var lowerCharactersString = 'abcdefghijklmnopqrstuvwxyz';
+  var upperCharactersString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbersString = "1234567890";
   var finalPwd = '';
+  var options = '';
 
   // Password length function
   var pwdLengthInput = window.prompt('Choose between 8 and 128 for the number of password characters.');
@@ -34,27 +35,27 @@ var generatePassword = function() {
   if (spCharacters === false && lowerCharacters === false && upperCharacters === false && numbers === false) {
    window.alert("Please choose at least one character type.")
   }
-  for (var i = 0; i < length; i++) {
-    if (spCharacters) {
-      finalPwd += generateRandomSymbol();
-    }
-    if (lowerCharacters) {
-      finalPwd += generateRandomLowerCase();
-    }
-    if (upperCharacters) {
-      finalPwd += generateRandomUpperCase();
-    }
-    if (numbers) {
-      finalPwd += generater(0,9);
-    }
+  if (spCharacters) {
+    options += spCharactersString;
   }
+  if (lowerCharacters) {
+    options += lowerCharactersString;
+  }
+  if (upperCharacters) {
+    options += upperCharactersString;
+  }
+  if (numbers) {
+    options += numbersString;
+  }
+  for (var i = 0; i < pwdLengthInput; i++) {
+    finalPwd = finalPwd.concat(options.charAt(Math.floor(Math.random() * options.length)))
+  }
+  return finalPwd
 }
   else {
     generatePassword()
   }
 };
-
-generatePassword()
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
