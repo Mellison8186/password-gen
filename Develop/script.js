@@ -1,11 +1,14 @@
 // Assignment code here
-var spCharacters = "!@#$%^&*()?.";
-var lowerCharacters = 'abcdefghijklmnopqrstuvwxyz';
-var upperCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numerals = "1234567890";
-finalPwd = ''
 
+// Declare generatePassword var function
 var generatePassword = function() {
+
+  // Declare global variables
+  var spCharacters = "!@#$%^&*()?.";
+  var lowerCharacters = 'abcdefghijklmnopqrstuvwxyz';
+  var upperCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numbers = "1234567890";
+  var finalPwd = '';
 
   // Password length function
   var pwdLengthInput = window.prompt('Choose between 8 and 128 for the number of password characters.');
@@ -19,26 +22,31 @@ var generatePassword = function() {
     }
   }
 }
-// The pwdLength function 
+
+// If statements for character prompts
   if (pwdLength(pwdLengthInput)) {
     var spCharacters = window.confirm("Would you like to use special characters?");
-    if (spCharacters === true) {
-      finalPwd += spCharacters
-    }
     var lowerCharacters = window.confirm("Would you like to use lower case characters?");
-    if (lowerCharacters === true) {
-      finalPwd += lowerCharacters
-    }
     var upperCharacters = window.confirm("Would you like to use upper case characters?");
-    if (upperCharacters === true) {
-      finalPwd += upperCharacters
+    var numbers = window.confirm("Would you like to use numbers?");
+
+    // If statement to validate that one character option is chosen
+  if (spCharacters === false && lowerCharacters === false && upperCharacters === false && numbers === false) {
+   window.alert("Please choose at least one character type.")
+  }
+  for (var i = 0; i < length; i++) {
+    if (spCharacters) {
+      finalPwd += generateRandomSymbol();
     }
-    var numerals = window.confirm("Would you like to use numbers?");
-    if (numerals === true) {
-      finalPwd += numerals
+    if (lowerCharacters) {
+      finalPwd += generateRandomLowerCase();
     }
-  if (spCharacters === false && lowerCharacters === false && upperCharacters === false && numerals === false) {
-   console.log(window.alert("Please choose at least one character type."))
+    if (upperCharacters) {
+      finalPwd += generateRandomUpperCase();
+    }
+    if (numbers) {
+      finalPwd += generater(0,9);
+    }
   }
 }
   else {
@@ -46,7 +54,7 @@ var generatePassword = function() {
   }
 };
 
-
+generatePassword()
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -60,7 +68,3 @@ function writePassword() {
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-//result.innerText = 
-
-generatePassword()
