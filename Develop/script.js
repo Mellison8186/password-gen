@@ -1,5 +1,3 @@
-// Assignment code here
-
 // Declare generatePassword var function
 var generatePassword = function() {
 
